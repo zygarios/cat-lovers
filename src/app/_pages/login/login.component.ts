@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserAuthService } from '../../_services/user-auth.service';
 
@@ -14,6 +14,7 @@ const MOCK_PASSWORD = 'Hasło123';
   host: {
     class: 'login',
   },
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
   private _formBuilder = inject(FormBuilder);

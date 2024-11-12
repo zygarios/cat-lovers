@@ -1,5 +1,6 @@
 import {
   afterNextRender,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   inject,
@@ -7,13 +8,14 @@ import {
   viewChild,
 } from '@angular/core';
 import { CatFactsService } from '../../_services/cat-facts.service';
+
 const MAX_NUMBER_OF_REQUESTS = 8;
 @Component({
   selector: 'app-cat-facts',
   standalone: true,
-  imports: [],
   templateUrl: './cat-facts.component.html',
   styleUrls: ['./cat-facts.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CatFactsComponent {
   private _catFactsService = inject(CatFactsService);
