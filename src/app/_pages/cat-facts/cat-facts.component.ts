@@ -7,7 +7,7 @@ import {
   viewChild,
 } from '@angular/core';
 import { CatFactsService } from '../../_services/cat-facts.service';
-
+const MAX_NUMBER_OF_REQUESTS = 8;
 @Component({
   selector: 'app-cat-facts',
   standalone: true,
@@ -32,7 +32,9 @@ export class CatFactsComponent {
     });
   }
 
-  private _loadCatFacts() {
+  private _loadCatFacts(maxNumber = MAX_NUMBER_OF_REQUESTS) {
+    maxNumber--;
+    if (maxNumber < 0) return;
     const { height, top } =
       this._hostElementRef.nativeElement.getBoundingClientRect();
 
@@ -44,7 +46,7 @@ export class CatFactsComponent {
         if (!this.catFacts().includes(fact)) {
           this.catFacts.update((facts) => [...facts, fact]);
         }
-        this._loadCatFacts();
+        this._loadCatFacts(maxNumber);
       });
     }
   }
