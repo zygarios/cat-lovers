@@ -1,0 +1,46 @@
+<h1 class="login__header">Zaloguj się</h1>
+<form class="login__form" [formGroup]="loginForm" (ngSubmit)="submitForm()">
+  <div class="login__formfield">
+    <label class="login__label" for="email">Email:</label>
+    <input
+      formControlName="email"
+      class="login__control"
+      type="email"
+      name="email"
+      id="email"
+    />
+    @if (loginForm.controls.email.invalid) {
+      @let control = loginForm.controls.email;
+      @if (control.errors?.["required"]) {
+        <span class="login__error-field">To pole jest wymagane.</span>
+      }
+      @if (control.errors?.["email"]) {
+        <span class="login__error-field"
+          >Proszę podać poprawny adres email.</span
+        >
+      }
+    }
+  </div>
+  <div class="login__formfield">
+    <label class="login__label" for="password">Hasło:</label>
+    <input
+      formControlName="password"
+      class="login__control"
+      type="password"
+      name="password"
+      id="password"
+    />
+    @if (loginForm.controls.password.invalid) {
+      @let control = loginForm.controls.password;
+      @if (control.errors?.["required"]) {
+        <span class="login__error-field">To pole jest wymagane.</span>
+      }
+      @if (control.errors?.["minlength"]) {
+        <span class="login__error-field"
+          >Hasło musi mieć co najmniej 6 znaków.</span
+        >
+      }
+    }
+  </div>
+  <button class="login__submit" type="submit">Zaloguj</button>
+</form>
