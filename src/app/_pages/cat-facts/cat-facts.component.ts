@@ -7,7 +7,7 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { CatFactsService } from '../../_services/cat-facts.service';
+import { CatFactsService } from './cat-facts.service';
 
 const MAX_NUMBER_OF_REQUESTS = 8;
 @Component({
@@ -15,6 +15,7 @@ const MAX_NUMBER_OF_REQUESTS = 8;
   standalone: true,
   templateUrl: './cat-facts.component.html',
   styleUrls: ['./cat-facts.component.scss'],
+  providers: [CatFactsService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CatFactsComponent {

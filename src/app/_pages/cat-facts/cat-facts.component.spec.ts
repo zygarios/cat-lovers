@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { CatFactsService } from '../../_services/cat-facts.service';
 import { CatFactsComponent } from './cat-facts.component';
+import { CatFactsService } from './cat-facts.service';
 
 class MockCatFactsService {
   getRandomCatFact() {
